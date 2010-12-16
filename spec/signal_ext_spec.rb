@@ -17,6 +17,12 @@ describe Signal do
       Signal.handlers.should include(Signal.list['INT'])
     end
 
+    it "allows symbol signal names" do
+      Signal.trap(:INT)
+      Signal.handlers.should include(Signal.list[:INT])
+    end
+
+
     it "does not allow unknown signal names" do
       expect {
         Signal.trap('interrupt')

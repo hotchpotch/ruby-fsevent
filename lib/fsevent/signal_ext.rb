@@ -27,6 +27,8 @@ module Signal
       case signal
       when Numeric
         list.values.include?(signal) ? signal : raise(ArgumentError, "Invalid signal number. #{error_msg}")
+      when Symbol
+        list.keys.include?(signal) ? list[signal] : raise(ArgumentError, "Invalid signal identifier. #{error_msg}")
       when String
         signal = signal.upcase
         list.keys.include?(signal) ? list[signal] : raise(ArgumentError, "Invalid signal identifier. #{error_msg}")
